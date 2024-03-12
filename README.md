@@ -12,22 +12,26 @@ This repository is solely maintained by Docker, Inc.
 
 ## Usage:
 
-From `https://get.docker.com`:
-```shell
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-```
+Install Docker from the source repo (This will install latest from the `stable` channel):
 
-From `https://test.docker.com`:
 ```shell
-curl -fsSL https://test.docker.com -o test-docker.sh
-sh test-docker.sh
-```
-
-From the source repo (This will install latest from the `stable` channel):
-```shell
+git clone https://github.com/QubitPi/docker-install.git
+cd docker-install
 sh install.sh
 ```
+
+### Executing the Docker Command Without Sudo
+
+By default, the docker command can only be run by the root user or by a user in the docker group, which is automatically
+created during Docker's installation process. We cannot run the docker command without prefixing it with "sudo" or 
+without being in the docker group. If we want to avoid typing "sudo" whenever we run the docker command, add our 
+username to the docker group:
+
+```shell
+sudo usermod -aG docker ${USER}
+```
+
+To apply the new group membership, log out of the server and back in
 
 ## Testing:
 
